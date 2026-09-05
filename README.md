@@ -1,46 +1,67 @@
 # Mi Primera Aplicación 2 (INACAP) 📱
 
-Proyecto de aplicación nativa Android desarrollado en **Kotlin** como parte de las actividades prácticas de INACAP.
+Proyecto de aplicación nativa Android desarrollado en **Kotlin** como parte de la asignatura **Aplicaciones Móviles para IoT (TI3V42)** en **INACAP**.
 
 ---
 
-## 📋 Bitácora de Desarrollo
+## 📋 Bitácora de Desarrollo y Funcionalidades
 
-### Fecha: 28 de Agosto, 2026
+### 🗓️ Sesión 3 y 4 (Agosto - Septiembre 2026)
 
-#### 1. 🔍 Exploración y Análisis del Proyecto
-- Se realizó una lectura y comprensión de la arquitectura base del proyecto en `/Users/mike/MiPrimeraaplicacion2`.
-- **Configuración técnica identificada:**
-  - **Lenguaje**: Kotlin con Gradle (Kotlin DSL - `build.gradle.kts`).
-  - **SDKs**: `compileSdk = 37`, `targetSdk = 37`, `minSdk = 24` (Android 7.0+).
-  - **Arquitectura base**: `MainActivity.kt` (`AppCompatActivity`) con soporte Edge-to-Edge y `activity_main.xml` basado en `ConstraintLayout`.
-
-#### 2. 🎨 Modificación y Diseño de la Interfaz (`activity_main.xml`)
-- Se incorporó un nuevo elemento `ImageView` por encima del `TextView` existente.
-- **Especificaciones aplicadas al logo:**
-  - **Recurso de imagen**: `@drawable/logo_inacap`
-  - **Dimensiones**: Ancho y alto de `96dp` (`android:layout_width="96dp"`, `android:layout_height="96dp"`).
-  - **Posicionamiento**: Centrado horizontalmente en la pantalla (`app:layout_constraintStart_toStartOf="parent"`, `app:layout_constraintEnd_toEndOf="parent"`).
-  - **Margen**: Margen superior de `32dp` con respecto a la parte superior (`android:layout_marginTop="32dp"`, `app:layout_constraintTop_toTopOf="parent"`).
-  - **Accesibilidad**: Inclusión de `contentDescription="Logo Inacap"`.
-
-#### 3. ⚙️ Configuración del Control de Versiones (Git)
-- Se inicializó el repositorio Git local en la rama principal `main`.
-- Se validaron los patrones de exclusión en `.gitignore` para evitar subir archivos temporales, caché de compilación (`.gradle`, `build/`) y credenciales locales (`local.properties`).
-- Se empaquetaron y registraron los cambios en el commit inicial con el mensaje:
-  ```bash
-  feat: initial commit - app Android con logo INACAP
-  ```
-
-#### 4. 🚀 Publicación en GitHub
-- Se configuró la autenticación con la cuenta de GitHub **`michaelarjelm`**.
-- Se creó y publicó el repositorio con visibilidad **Pública**:
-  - **URL del Repositorio**: [https://github.com/michaelarjelm/MiPrimeraaplicacion2](https://github.com/michaelarjelm/MiPrimeraaplicacion2)
-  - **Rama**: `main`
+#### 1. 🏗️ Arquitectura y Configuración Base
+- **Lenguaje**: Kotlin con Gradle (Kotlin DSL - `build.gradle.kts`).
+- **Compatibilidad**: `compileSdk = 37`, `targetSdk = 37`, `minSdk = 24` (Android 7.0+).
+- **Diseño**: `ConstraintLayout` con soporte moderno Edge-to-Edge (`enableEdgeToEdge()`).
+- **Arquitectura Multiactivity**: Navegación mediante `Intent` explícito entre `MainActivity` y `BienvenidaActivity`.
 
 ---
 
-## 📂 Estructura Principal del Repositorio
+#### 2. 🧩 Los 10 Incrementales de la Interfaz y Lógica
+
+1. **Incremento 1 — `ImageView` con Logo INACAP:**
+   - Incorporación del logo institucional (`@drawable/logo_inacap`) centrado horizontalmente (96dp x 96dp, margen superior de 32dp).
+2. **Incremento 2 — `TextView` de Título:**
+   - Título `"Iniciar sesión"` (24sp, negrita, centrado horizontalmente bajo el logo).
+3. **Incremento 3 — `EditText` para Usuario/Correo:**
+   - Campo de entrada `edtUsuario` con hint `"Usuario"`, ancho dinámico (`0dp`) y márgenes laterales de 24dp.
+4. **Incremento 4 — `EditText` para Contraseña:**
+   - Campo `edtPassword` con `android:inputType="textPassword"` para enmascarar caracteres.
+5. **Incremento 5 — `CheckBox` Recordarme:**
+   - Casilla de verificación `chkRecordarme` con texto `"Recordarme"`.
+6. **Incremento 6 — `Button` Ingresar:**
+   - Botón `btnIngresar` de ancho completo con texto `"Ingresar"`.
+7. **Incremento 7 — Lógica en Kotlin (`onIngresarClick`):**
+   - Vinculación mediante `android:onClick` para leer las vistas con `findViewById` y procesar el formulario.
+8. **Incremento 8 — Segunda Pantalla (`BienvenidaActivity`):**
+   - Creación de `BienvenidaActivity`, diseño `activity_bienvenida.xml` con `txtBienvenida` centrado y registro formal en `AndroidManifest.xml`.
+9. **Incremento 9 — Navegación con `Intent`:**
+   - Transición fluida desde `MainActivity` hacia `BienvenidaActivity` al superar las validaciones.
+10. **Incremento 10 — Transferencia de Datos entre Pantallas:**
+    - Envío del usuario vía `intent.putExtra("usuario", usuario)` y recepción en `BienvenidaActivity` mostrando `"Bienvenido, <usuario>"`.
+
+---
+
+#### 3. ✨ Mejoras y Validaciones Avanzadas Implementadas
+
+* **👁️ Mostrar / Ocultar Contraseña:**
+  - `ImageButton` interactivo (`btnMostrarPassword`) con icono vectorial `@drawable/ic_visibility_24`.
+  - Alternancia dinámica de `InputType` (`TYPE_TEXT_VARIATION_VISIBLE_PASSWORD` / `TYPE_TEXT_VARIATION_PASSWORD`) manteniendo la posición del cursor.
+* **📧 Validación de Formato de Correo Electrónico:**
+  - Uso de `android.util.Patterns.EMAIL_ADDRESS` para asegurar que el usuario ingrese una dirección de correo válida.
+* **🔒 Validación de Longitud de Contraseña:**
+  - Comprobación de longitud mínima de al menos 6 caracteres.
+* **⚠️ Notificación Visual de Errores (`.error`):**
+  - Señalización directa en los campos de entrada (`edtUsuario.error` y `edtPassword.error`) indicando el motivo exacto del fallo.
+* **🔢 Contador de Intentos Fallidos:**
+  - Variable `intentosFallidos` a nivel de clase que contabiliza los intentos erróneos y los refleja en el mensaje flotante `Toast` (ej. `"Completa usuario y contraseña (intento 2)"`).
+* **🧹 Función de Limpieza de Formulario (`onLimpiarClick`):**
+  - Botón dedicado que restablece los campos de texto, desmarca el checkbox, borra los mensajes de error y reinicia el contador de intentos a 0.
+* **📝 Código 100% Comentado:**
+  - Cada línea en Kotlin y XML cuenta con comentarios explicativos de su funcionamiento y propósito arquitectónico.
+
+---
+
+## 📂 Estructura del Proyecto
 
 ```text
 MiPrimeraaplicacion2/
@@ -48,17 +69,24 @@ MiPrimeraaplicacion2/
 │   ├── src/
 │   │   ├── main/
 │   │   │   ├── java/com/example/miprimeraaplicacion2/
-│   │   │   │   └── MainActivity.kt
+│   │   │   │   ├── MainActivity.kt          # Pantalla de Login, validaciones e Intents
+│   │   │   │   └── BienvenidaActivity.kt    # Pantalla de destino y recepción de extras
 │   │   │   ├── res/
 │   │   │   │   ├── drawable/
-│   │   │   │   │   └── logo_inacap.png
+│   │   │   │   │   ├── logo_inacap.png      # Logo institucional INACAP
+│   │   │   │   │   └── ic_visibility_24.xml # Icono vectorial para ver contraseña
 │   │   │   │   ├── layout/
-│   │   │   │   │   └── activity_main.xml
+│   │   │   │   │   ├── activity_main.xml    # Layout del Login con ConstraintLayout
+│   │   │   │   │   └── activity_bienvenida.xml # Layout de Bienvenida
 │   │   │   │   └── values/
-│   │   │   └── AndroidManifest.xml
+│   │   │   │       ├── colors.xml
+│   │   │   │       ├── strings.xml
+│   │   │   │       └── themes.xml
+│   │   │   └── AndroidManifest.xml          # Registro de actividades y permisos
 │   │   └── test/
 │   └── build.gradle.kts
 ├── gradle/
+│   └── libs.versions.toml                   # Catálogo de versiones y dependencias
 ├── build.gradle.kts
 ├── settings.gradle.kts
 └── README.md
@@ -67,6 +95,7 @@ MiPrimeraaplicacion2/
 ---
 
 ## 🛠️ Tecnologías y Dependencias
-- **Kotlin** & **Android Gradle Plugin**
+- **Kotlin** & **Android Gradle Plugin (AGP)**
 - **AndroidX**: `appcompat`, `constraintlayout`, `core-ktx`, `activity-ktx`
 - **Material Components for Android**
+- **Android Patterns API** para validación de expresiones regulares.

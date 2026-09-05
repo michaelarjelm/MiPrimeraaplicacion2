@@ -57,6 +57,19 @@
         android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@id/edtUsuario"
         app:layout_constraintStart_toStartOf="@id/edtUsuario"
+        app:layout_constraintEnd_toStartOf="@id/btnMostrarPassword" />
+
+    <!-- Botón de imagen para mostrar u ocultar la contraseña -->
+    <ImageButton
+        android:id="@+id/btnMostrarPassword"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_visibility_24"
+        android:background="@android:color/transparent"
+        android:contentDescription="Mostrar u ocultar contraseña"
+        android:onClick="onMostrarPasswordClick"
+        app:layout_constraintTop_toTopOf="@id/edtPassword"
+        app:layout_constraintBottom_toBottomOf="@id/edtPassword"
         app:layout_constraintEnd_toEndOf="@id/edtUsuario" />
 
     <!-- Casilla de verificación Recordarme (Incremento 5): debajo del campo contraseña -->
@@ -78,8 +91,8 @@
         android:text="Ingresar"
         android:onClick="onIngresarClick"
         app:layout_constraintTop_toBottomOf="@id/chkRecordarme"
-        app:layout_constraintStart_toStartOf="@id/edtPassword"
-        app:layout_constraintEnd_toEndOf="@id/edtPassword" />
+        app:layout_constraintStart_toStartOf="@id/edtUsuario"
+        app:layout_constraintEnd_toEndOf="@id/edtUsuario" />
 
     <!-- Botón Limpiar: limpia los campos de texto y el checkbox al ejecutar onLimpiarClick -->
     <Button
