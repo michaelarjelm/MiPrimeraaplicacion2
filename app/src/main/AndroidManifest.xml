@@ -11,8 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiPrimeraaplicacion2">
+        <!-- Registro de la pantalla de Bienvenida (Incremento 8) -->
         <activity
             android:name=".BienvenidaActivity"
+            android:exported="false" />
+        <!-- Registro de la pantalla de Preferencias (Incremento 15) -->
+        <activity
+            android:name=".PreferenciasActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

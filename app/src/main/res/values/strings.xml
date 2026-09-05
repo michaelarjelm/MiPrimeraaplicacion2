@@ -1,3 +1,10 @@
 <resources>
+    <!-- Nombre de la aplicación -->
     <string name="app_name">MiPrimeraaplicacion2</string>
+
+    <!-- Lista de opciones de idioma para el Spinner de Preferencias (Incremento 17) -->
+    <string-array name="idiomas">
+        <item>Español</item>
+        <item>Inglés</item>
+    </string-array>
 </resources>

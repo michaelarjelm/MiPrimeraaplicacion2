@@ -16,48 +16,31 @@ Proyecto de aplicación nativa Android desarrollado en **Kotlin** como parte de 
 
 ---
 
-#### 2. 🧩 Los 10 Incrementales de la Interfaz y Lógica
+#### 2. 🧩 Los 20 Incrementales de la Interfaz y Lógica
 
-1. **Incremento 1 — `ImageView` con Logo INACAP:**
-   - Incorporación del logo institucional (`@drawable/logo_inacap`) centrado horizontalmente (96dp x 96dp, margen superior de 32dp).
-2. **Incremento 2 — `TextView` de Título:**
-   - Título `"Iniciar sesión"` (24sp, negrita, centrado horizontalmente bajo el logo).
-3. **Incremento 3 — `EditText` para Usuario/Correo:**
-   - Campo de entrada `edtUsuario` con hint `"Usuario"`, ancho dinámico (`0dp`) y márgenes laterales de 24dp.
-4. **Incremento 4 — `EditText` para Contraseña:**
-   - Campo `edtPassword` con `android:inputType="textPassword"` para enmascarar caracteres.
-5. **Incremento 5 — `CheckBox` Recordarme:**
-   - Casilla de verificación `chkRecordarme` con texto `"Recordarme"`.
-6. **Incremento 6 — `Button` Ingresar:**
-   - Botón `btnIngresar` de ancho completo con texto `"Ingresar"`.
-7. **Incremento 7 — Lógica en Kotlin (`onIngresarClick`):**
-   - Vinculación mediante `android:onClick` para leer las vistas con `findViewById` y procesar el formulario.
-8. **Incremento 8 — Segunda Pantalla (`BienvenidaActivity`):**
-   - Creación de `BienvenidaActivity`, diseño `activity_bienvenida.xml` con `txtBienvenida` centrado y registro formal en `AndroidManifest.xml`.
-9. **Incremento 9 — Navegación con `Intent`:**
-   - Transición fluida desde `MainActivity` hacia `BienvenidaActivity` al superar las validaciones.
-10. **Incremento 10 — Transferencia de Datos entre Pantallas:**
-    - Envío del usuario vía `intent.putExtra("usuario", usuario)` y recepción en `BienvenidaActivity` mostrando `"Bienvenido, <usuario>"`.
+##### Sesión 3: Login y Navegación Base (Incrementos 1 al 10)
+1. **Incremento 1 — `ImageView` con Logo INACAP:** Logo institucional (`@drawable/logo_inacap`) centrado horizontalmente.
+2. **Incremento 2 — `TextView` de Título:** Título `"Iniciar sesión"` (24sp, negrita).
+3. **Incremento 3 — `EditText` para Usuario/Correo:** Campo `edtUsuario` con ancho dinámico (`0dp`) y márgenes laterales de 24dp.
+4. **Incremento 4 — `EditText` para Contraseña:** Campo `edtPassword` con `android:inputType="textPassword"`.
+5. **Incremento 5 — `CheckBox` Recordarme:** Casilla de verificación `chkRecordarme`.
+6. **Incremento 6 — `Button` Ingresar:** Botón de inicio de sesión de ancho completo.
+7. **Incremento 7 — Lógica en Kotlin (`onIngresarClick`):** Manejo de clics y lectura de datos con `findViewById`.
+8. **Incremento 8 — Segunda Pantalla (`BienvenidaActivity`):** Creación de la actividad y registro en `AndroidManifest.xml`.
+9. **Incremento 9 — Navegación con `Intent`:** Transición hacia `BienvenidaActivity`.
+10. **Incremento 10 — Transferencia de Datos entre Pantallas:** Envío vía `putExtra("usuario", usuario)` y lectura en `BienvenidaActivity`.
 
----
-
-#### 3. ✨ Mejoras y Validaciones Avanzadas Implementadas
-
-* **👁️ Mostrar / Ocultar Contraseña:**
-  - `ImageButton` interactivo (`btnMostrarPassword`) con icono vectorial `@drawable/ic_visibility_24`.
-  - Alternancia dinámica de `InputType` (`TYPE_TEXT_VARIATION_VISIBLE_PASSWORD` / `TYPE_TEXT_VARIATION_PASSWORD`) manteniendo la posición del cursor.
-* **📧 Validación de Formato de Correo Electrónico:**
-  - Uso de `android.util.Patterns.EMAIL_ADDRESS` para asegurar que el usuario ingrese una dirección de correo válida.
-* **🔒 Validación de Longitud de Contraseña:**
-  - Comprobación de longitud mínima de al menos 6 caracteres.
-* **⚠️ Notificación Visual de Errores (`.error`):**
-  - Señalización directa en los campos de entrada (`edtUsuario.error` y `edtPassword.error`) indicando el motivo exacto del fallo.
-* **🔢 Contador de Intentos Fallidos:**
-  - Variable `intentosFallidos` a nivel de clase que contabiliza los intentos erróneos y los refleja en el mensaje flotante `Toast` (ej. `"Completa usuario y contraseña (intento 2)"`).
-* **🧹 Función de Limpieza de Formulario (`onLimpiarClick`):**
-  - Botón dedicado que restablece los campos de texto, desmarca el checkbox, borra los mensajes de error y reinicia el contador de intentos a 0.
-* **📝 Código 100% Comentado:**
-  - Cada línea en Kotlin y XML cuenta con comentarios explicativos de su funcionamiento y propósito arquitectónico.
+##### Sesión 4: Sube el Nivel (Incrementos 11 al 20)
+11. **Incremento 11 — Botón Limpiar:** Botón `btnLimpiar` con `onLimpiarClick` para vaciar campos, resetear errores y contador.
+12. **Incremento 12 — ImageButton para Contraseña:** Alternancia de visibilidad de contraseña con icono vectorial `@drawable/ic_visibility_24`.
+13. **Incremento 13 — Contador de Intentos Fallidos:** Conteo de intentos en memoria y despliegue en mensaje `Toast`.
+14. **Incremento 14 — Validación Completa:** Verificación de formato de correo con `Patterns.EMAIL_ADDRESS`, contraseña >= 6 caracteres y feedback con `.error`.
+15. **Incremento 15 — Tercera Pantalla (`PreferenciasActivity`):** Botón `btnPreferencias` en bienvenida y navegación con paso de parámetros.
+16. **Incremento 16 — LinearLayout Vertical + Switch:** Contenedor lineal apilado y control `swNotificaciones`.
+17. **Incremento 17 — Spinner de Idioma:** Desplegable `spIdioma` conectado a `@array/idiomas` en `strings.xml`.
+18. **Incremento 18 — RadioGroup y RadioButton:** Selector de unidad de temperatura (Celsius / Fahrenheit).
+19. **Incremento 19 — ProgressBar Asíncrono:** Barra de progreso `pbGuardando` con retardo simulado de 1 segundo vía `Handler.postDelayed`.
+20. **Incremento 20 — Cerrar Sesión:** Botón `btnCerrarSesion` con `finishAffinity()` para vaciar el stack de navegación y volver al Login.
 
 ---
 
@@ -70,17 +53,19 @@ MiPrimeraaplicacion2/
 │   │   ├── main/
 │   │   │   ├── java/com/example/miprimeraaplicacion2/
 │   │   │   │   ├── MainActivity.kt          # Pantalla de Login, validaciones e Intents
-│   │   │   │   └── BienvenidaActivity.kt    # Pantalla de destino y recepción de extras
+│   │   │   │   ├── BienvenidaActivity.kt    # Pantalla de Bienvenida y navegación a Preferencias
+│   │   │   │   └── PreferenciasActivity.kt  # Pantalla de Preferencias y controles de configuración
 │   │   │   ├── res/
 │   │   │   │   ├── drawable/
 │   │   │   │   │   ├── logo_inacap.png      # Logo institucional INACAP
 │   │   │   │   │   └── ic_visibility_24.xml # Icono vectorial para ver contraseña
 │   │   │   │   ├── layout/
-│   │   │   │   │   ├── activity_main.xml    # Layout del Login con ConstraintLayout
-│   │   │   │   │   └── activity_bienvenida.xml # Layout de Bienvenida
+│   │   │   │   │   ├── activity_main.xml         # Layout del Login con ConstraintLayout
+│   │   │   │   │   ├── activity_bienvenida.xml   # Layout de Bienvenida
+│   │   │   │   │   └── activity_preferencias.xml # Layout de Preferencias con LinearLayout
 │   │   │   │   └── values/
 │   │   │   │       ├── colors.xml
-│   │   │   │       ├── strings.xml
+│   │   │   │       ├── strings.xml               # Recursos de texto y array de idiomas
 │   │   │   │       └── themes.xml
 │   │   │   └── AndroidManifest.xml          # Registro de actividades y permisos
 │   │   └── test/

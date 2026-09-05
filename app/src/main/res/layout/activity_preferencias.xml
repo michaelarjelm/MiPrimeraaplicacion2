@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Contenedor principal de la pantalla de Preferencias con ConstraintLayout -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PreferenciasActivity">
+
+    <!-- Título de la pantalla de Preferencias (Incremento 15) -->
+    <TextView
+        android:id="@+id/txtTituloPreferencias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Preferencias"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Contenedor LinearLayout vertical: apila los controles uno debajo del otro sin restricciones individuales (Incremento 16) -->
+    <LinearLayout
+        android:id="@+id/contenedorPreferencias"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/txtTituloPreferencias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Interruptor Switch para activar o desactivar notificaciones (Incremento 16) -->
+        <Switch
+            android:id="@+id/swNotificaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recibir notificaciones" />
+
+        <!-- Menú desplegable Spinner para seleccionar el idioma configurado desde strings.xml (Incremento 17) -->
+        <Spinner
+            android:id="@+id/spIdioma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:entries="@array/idiomas" />
+
+        <!-- Grupo de opciones RadioGroup para seleccionar la unidad de temperatura (Incremento 18) -->
+        <RadioGroup
+            android:id="@+id/rgUnidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <!-- Opción Celsius marcada por defecto (Incremento 18) -->
+            <RadioButton
+                android:id="@+id/rbCelsius"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Celsius" />
+
+            <!-- Opción Fahrenheit (Incremento 18) -->
+            <RadioButton
+                android:id="@+id/rbFahrenheit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fahrenheit" />
+
+        </RadioGroup>
+
+        <!-- Barra de progreso indeterminada que simula guardado en segundo plano (Incremento 19) -->
+        <ProgressBar
+            android:id="@+id/pbGuardando"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:visibility="gone" />
+
+        <!-- Botón para guardar las preferencias seleccionadas (Incremento 19) -->
+        <Button
+            android:id="@+id/btnGuardarPreferencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="onGuardarPreferenciaClick"
+            android:text="Guardar" />
+
+        <!-- Botón para cerrar sesión y volver a la pantalla de Login (Incremento 20) -->
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#4A4A4A"
+            android:onClick="onCerrarSesionClick"
+            android:text="Cerrar sesión" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
