@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "963742995438",
+    "project_id": "iot-viernes",
+    "storage_bucket": "iot-viernes.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963742995438:android:ab6843091779f26ac2b4ff",
+        "android_client_info": {
+          "package_name": "com.example.miprimeraaplicacion2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963742995438-f3021f82p2pn8prurkfsnv369u5akkv3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.miprimeraaplicacion2",
+            "certificate_hash": "f89159afc942266179475c835fa84f3234ba0059"
+          }
+        },
+        {
+          "client_id": "963742995438-6pe0r7bqiikltomd33mqtnsmir2hr6hh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBUef1r8XNsvCgalDsjXnlbpLYC_XzxhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963742995438-6pe0r7bqiikltomd33mqtnsmir2hr6hh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

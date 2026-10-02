@@ -1,38 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Contenedor principal de la pantalla de bienvenida con ConstraintLayout -->
+<!-- Vista de Perfil de Usuario en BienvenidaActivity -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
     tools:context=".BienvenidaActivity">
 
-    <!-- Texto de bienvenida (Incremento 8 y 10): centrado vertical y horizontalmente en toda la pantalla -->
+    <!-- Título de la vista -->
     <TextView
-        android:id="@+id/txtBienvenida"
+        android:id="@+id/txtTituloPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bienvenido"
+        android:layout_marginTop="32dp"
+        android:text="Perfil de Usuario"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Imagen de Perfil -->
+    <ImageView
+        android:id="@+id/imgPerfil"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/logo_inacap"
+        android:contentDescription="Foto de Perfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtTituloPerfil" />
+
+    <!-- Nombre Completo -->
+    <TextView
+        android:id="@+id/txtNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Cargando perfil..."
         android:textSize="20sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintTop_toBottomOf="@id/imgPerfil" />
 
-    <!-- Botón para navegar a la pantalla de Preferencias (Incremento 15) -->
-    <Button
-        android:id="@+id/btnPreferencias"
+    <!-- Correo Electrónico -->
+    <TextView
+        android:id="@+id/txtEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:text="correo@ejemplo.com"
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtNombre" />
+
+    <!-- Método de Autenticación / Proveedor -->
+    <TextView
+        android:id="@+id/txtProveedor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Proveedor: ---"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        android:textColor="#2196F3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtEmail" />
+
+    <!-- Identificador Único de Usuario (UID) -->
+    <TextView
+        android:id="@+id/txtUid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="UID: ---"
+        android:textSize="12sp"
+        android:textColor="#888888"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtProveedor" />
+
+    <!-- Botón Preferencias -->
+    <Button
+        android:id="@+id/btnPreferencias"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="Preferencias"
         android:onClick="onPreferenciasClick"
-        app:layout_constraintTop_toBottomOf="@id/txtBienvenida"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/txtUid" />
+
+    <!-- Botón Cerrar Sesión -->
+    <Button
+        android:id="@+id/btnCerrarSesionPerfil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Cerrar sesión"
+        android:backgroundTint="#4A4A4A"
+        android:onClick="onCerrarSesionClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnPreferencias" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
